@@ -31,3 +31,10 @@ $ sudo docker run -it --rm --name elastictweet   -v "$PWD":/usr/src/view -w /usr
 
 Then open http://127.0.0.1:5000/ in Chrome.
 
+# Using the application
+
+You should arrive at the following landing page.
+
+![Landing page](static/img/landing.png?raw=true "Landing page")
+
+
