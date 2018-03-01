@@ -156,12 +156,6 @@ $(document).ready(function() {
         <a href="#" data-scroll-to="#introduction" id="scroll-to-content" class="btn btn-outline-light btn-pill align-self-center">Use app</a>
       </div>
     </div>
-    <!-- <div class="product-by">
-      <a href="https://designrevision.com" target="_blank">
-        <p>A Product By</p>
-        <img src="https://dgc2qnsehk7ta.cloudfront.net/general/designrevision-logo.png" alt="DesignRevision - Making powerful tools for web professionals">
-      </a>
-    </div> -->
   </div>
 
   <!-- Page Content -->
@@ -169,19 +163,12 @@ $(document).ready(function() {
       
   <!-- Cards -->
   <div id="cards" class="container mb-2" style="padding-bottom: 1px">
-    <!-- <div class="section-title col-lg-8 col-md-10 ml-auto mr-auto">
-      <h3 class="mb-4">Cards</h3>
-      <p>We wanted cards to stand out and bring depth without changing their original structure. All of this while allowing
-        them to play well with the other components.</p>
-    </div>
--->
     <div class="example col-md-12 ml-auto mr-auto">
       <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
           <div class="card">
-            <!-- <img class="card-img-top" src="images/demo/stock-photos/3.jpg" alt="Card image cap"> -->
             <div class="card-body">
-              <h4 class="card-title">Change keyword</h4>
+              <h4 class="card-title">Specify keyword</h4>
               <div class="form-group col-md-12">
                 <label for="form1-name" class="col-form-label">Keyword</label>
                 <input type="text" class="form-control" id="keyword_input" placeholder="">
@@ -191,14 +178,14 @@ $(document).ready(function() {
                 <input type="text" class="form-control" id="hmt" value="100">
               </div>
               <button id="submit_keyword" type="button" style="width:49%" class="form-control btn btn-secondary">Get tweets</button>
-              <button id="clear_results" type="button" style="width:49%" class="form-control btn btn-secondary">Clear</button>
+             <!--  <button id="clear_results" type="button" style="width:26%" class="form-control btn btn-secondary">Clear</button> -->
+              <button id="history" type="button" style="width:49%" class="form-control btn btn-secondary">History</button>
             </div>
           </div>
         </div>
 
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4 sm-hidden">
           <div class="card">
-            <!-- <img class="card-img-top" src="images/demo/stock-photos/1.jpg" alt="Card image cap"> -->
             <div class="card-body">
               <h4 class="card-title">Push to ElasticSearch</h4>
               <div class="form-group col-md-12">
@@ -217,32 +204,21 @@ $(document).ready(function() {
 
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4 sm-hidden">
           <div class="card">
-            <!-- <img class="card-img-top" src="images/demo/stock-photos/2.jpg" alt="Card image cap"> -->
             <div class="card-body">
               <h4 class="card-title">ES Configurations</h4>
               <div class="form-group col-md-12">
                 <label for="form1-name" class="col-form-label">Host</label>
-                <input type="text" class="form-control" value="localhost" id="form1-name" placeholder="">
+                <input type="text" class="form-control" value="127.0.0.1" id="es_host_input" placeholder="">
               </div>
               <div class="form-group col-md-12">
                 <label for="form1-name" class="col-form-label">Port</label>
-                <input type="text" class="form-control" value="9200" id="form2-name" placeholder="">
+                <input type="text" class="form-control" value="9200" id="es_port_input" placeholder="">
               </div>
+              <button id="open_es" type="button" style="width:49%" class="form-control btn btn-secondary">Open ES</button>
+              <button data-toggle="modal" data-target="#kibanaModal" type="button" style="width:49%" class="form-control btn btn-secondary">Open Kibana</button>
             </div>
           </div>
         </div>
-
-        <!-- <div class="col-lg-4 col-md-6 col-sm-12 d-none sm-hidden last">
-          <div class="card">
-            <img class="card-img-top" src="images/demo/stock-photos/2.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">Sample Card Title</h4>
-              <p class="card-text">He seems sinking under the evidence could not only grieve and a visit. The father is to bless and placed
-                in his length hid...</p>
-              <a href="#" class="btn btn-primary">Read More</a>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>
@@ -321,82 +297,84 @@ $(document).ready(function() {
     </div>
   </div>
 </div>
-<!-- </div>
-</div>
-</div>
-</div> -->
-
-          <!-- Alerts
-          <div id="alerts">
-            <div class="container">
-              <div class="section-title col-lg-8 col-md-10 ml-auto mr-auto">
-                <h3 class="mb-4">Alerts</h3>
-              </div>
-            </div>
-
-            <div class="mb-5">
-              <!- - Info Dismissible Alert -->
-             <!--  <div class="alert alert-info alert-dismissible fade show" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <i class="fa fa-info"></i>
-                <strong>Hey!</strong> I think you should know this.
-              </div> -->
-
-              <!-- Success Dismissible Alert -->
-              <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <i class="fa fa-check"></i>
-                <strong>Yay!</strong> Everything is fine!
-              </div> -->
-
-              <!-- Warning Dismissible Alert -->
-              <!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <i class="fa fa-warning"></i>
-                <strong>Oops!</strong> Something might be wrong
-              </div> -->
-
-              <!-- Danger Dismissible Alert -->
-              <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <i class="fa fa-exclamation-circle"></i>
-                <strong>On no!</strong> Something really bad happened!
-              </div> -->
-            
 
 <!-- gifs: http://www.studentshow.com/gallery/31234507/Free-Loading-GIF-Icons-Vol-1 -->
 <div class="mb-5">
 
-<!-- Modal Body -->
-<div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">This may take a few moments...</h5>
+  <!-- Modal Body -->
+  <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">This may take a few moments...</h5>
+        </div>
+        <img id="loading_gif_0" style="display:none;margin-left:auto; margin-right:auto;width:256px;height:256px;" src="../static/img/0.gif" alt="Preloader">
+        <img id="loading_gif_1" style="display:none;margin-left:auto; margin-right:auto;width:256px;height:256px;" src="../static/img/1.gif" alt="Preloader">
+        <img id="loading_gif_2" style="display:none;margin-left:auto; margin-right:auto;width:256px;height:256px;" src="../static/img/2.gif" alt="Preloader">
+        <img id="loading_gif_3" style="display:none;margin-left:auto; margin-right:auto;width:256px;height:256px;" src="../static/img/3.gif" alt="Preloader">
+        <img id="loading_gif_4" style="display:none;margin-left:auto; margin-right:auto;width:256px;height:256px;" src="../static/img/4.gif" alt="Preloader">
+        <img id="loading_gif_5" style="display:none;margin-left:auto; margin-right:auto;width:256px;height:256px;" src="../static/img/5.gif" alt="Preloader">
+        <img id="loading_gif_6" style="display:none;margin-left:auto; margin-right:auto;width:256px;height:256px;" src="../static/img/6.gif" alt="Preloader">
+        <img id="loading_gif_7" style="display:none;margin-left:auto; margin-right:auto;width:256px;height:256px;" src="../static/img/7.gif" alt="Preloader">
+        <img id="loading_gif_8" style="display:none;margin-left:auto; margin-right:auto;width:256px;height:256px;" src="../static/img/8.gif" alt="Preloader">
+        <img id="loading_gif_9" style="display:none;margin-left:auto; margin-right:auto;width:256px;height:256px;" src="../static/img/9.gif" alt="Preloader">
       </div>
-      <img id="loading_gif_0" style="display:none;margin-left:auto; margin-right:auto;width:256px;height:256px;" src="../static/img/0.gif" alt="Preloader">
-      <img id="loading_gif_1" style="display:none;margin-left:auto; margin-right:auto;width:256px;height:256px;" src="../static/img/1.gif" alt="Preloader">
-      <img id="loading_gif_2" style="display:none;margin-left:auto; margin-right:auto;width:256px;height:256px;" src="../static/img/2.gif" alt="Preloader">
-      <img id="loading_gif_3" style="display:none;margin-left:auto; margin-right:auto;width:256px;height:256px;" src="../static/img/3.gif" alt="Preloader">
-      <img id="loading_gif_4" style="display:none;margin-left:auto; margin-right:auto;width:256px;height:256px;" src="../static/img/4.gif" alt="Preloader">
-      <img id="loading_gif_5" style="display:none;margin-left:auto; margin-right:auto;width:256px;height:256px;" src="../static/img/5.gif" alt="Preloader">
-      <img id="loading_gif_6" style="display:none;margin-left:auto; margin-right:auto;width:256px;height:256px;" src="../static/img/6.gif" alt="Preloader">
-      <img id="loading_gif_7" style="display:none;margin-left:auto; margin-right:auto;width:256px;height:256px;" src="../static/img/7.gif" alt="Preloader">
-      <img id="loading_gif_8" style="display:none;margin-left:auto; margin-right:auto;width:256px;height:256px;" src="../static/img/8.gif" alt="Preloader">
-      <img id="loading_gif_9" style="display:none;margin-left:auto; margin-right:auto;width:256px;height:256px;" src="../static/img/9.gif" alt="Preloader">
     </div>
   </div>
 </div>
+
+
+<div class="mb-5">
+
+  <!-- Modal Body -->
+  <div class="modal fade" id="historyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Search history:</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-    
+        <div class="modal-body" id="history_modal_body">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="mb-5">
+
+  <!-- Modal Body -->
+  <div class="modal fade" id="kibanaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Please specify the following Kibana details:</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group col-md-12">
+            <label for="form1-name" class="col-form-label">Host</label>
+            <input type="text" class="form-control" value="127.0.0.1" id="kibana_host_input" placeholder="">
+          </div>
+          <div class="form-group col-md-12">
+            <label for="form1-name" class="col-form-label">Port</label>
+            <input type="text" class="form-control" value="5601" id="kibana_port_input" placeholder="">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="open_kibana" type="button" style="width:49%" class="form-control btn btn-secondary">Open Kibana</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
   <!-- JavaScript -->
   <div id="fb-root"></div>
@@ -425,11 +403,60 @@ $(document).ready(function() {
 </body>
 <script>
 
+
+$(document).ready(function(){
+  $("#history").click(function(){
+    $.ajax({
+      type : 'GET',
+      url : "{{url_for('history')}}",
+      success: function(response) {
+        resp = jQuery.parseJSON(response);
+        hist = resp["history"];
+        for (var i = 0; i < hist.length; i++) {
+          $('#history_modal_body').append('<div class="form-group col-md-12">'+hist[i]+'</div>');
+          $("#historyModal").modal('show');
+        }
+      },
+      error: function(error) {
+          alert("An error has occured.");
+      }
+    });
+  });
+});
+
 $(document).ready(function(){
 	$("#clear_results").click(function(){
 		clear();
 	});
 });
+
+$(document).ready(function(){
+  $("#open_es").click(function(){
+    var win = window.open('http://'+$("#es_host_input").val()+":"+$("#es_port_input").val(), '_blank');
+    if (win) {
+        //Browser has allowed it to be opened
+        win.focus();
+    } else {
+        //Browser has blocked it
+        alert('Error: Please ensure the ES configurations are correct');
+    }
+  });
+});
+
+
+$(document).ready(function(){
+  $("#open_kibana").click(function(){
+    var win = window.open('http://'+$("#kibana_host_input").val()+":"+$("#kibana_port_input").val(), '_blank');
+    if (win) {
+        //Browser has allowed it to be opened
+        win.focus();
+    } else {
+        //Browser has blocked it
+        alert('Error: Please ensure the Kibana configurations are correct');
+    }
+  });
+});
+
 
 function clear() {
   document.getElementById("results_table_body").innerHTML = "";
@@ -440,6 +467,10 @@ function es_validation() {
 		alert("Please enter an index!");
 		return false;
 	}
+  if ($("#doc_type_input").val() == "") {
+    alert("Please enter a doc_type!");
+    return false;
+  }
 	if (tweet_response == null) {
 		alert("You must search for something.");
 		return false;
@@ -455,15 +486,17 @@ $(document).ready(function(){
 		$.ajax({
 			type : 'POST',
 			url : "{{url_for('push_to_es')}}",
-  			data : {'tweets':tweet_response,
-  					'index':$("#index_input").val(),
-            'doc_type':$("#doc_type_input").val()},
-  			success: function(response) {
-  				alert("data successfully pushed to Elasticsearch!");
-            },
-            error: function(error) {
-                alert(error);
-            }
+			data : {'tweets':tweet_response,
+					'index':$("#index_input").val(),
+          'doc_type':$("#doc_type_input").val(),
+          'es_host':$("#es_host_input").val(),
+          'es_port':$("#es_port_input").val()},
+			success: function(response) {
+				alert("Data successfully pushed to Elasticsearch!");
+      },
+      error: function(error) {
+          alert("An error has occured.");
+      }
 		});
 	});
 });
@@ -471,6 +504,10 @@ $(document).ready(function(){
 var tweet_response = null;
 $(document).ready(function(){
 	$("#submit_keyword").click(function(){
+    if ($("#keyword_input").val() == "") {
+      alert("Please specify a keyword.");
+      return;
+    }
 		// document.getElementById("loading").style.display="block";
     $('#loadingModal').modal('show');
     var gif_id = parseInt(Math.random()*10);
@@ -492,10 +529,6 @@ $(document).ready(function(){
           	alert("No tweets to display!");
           }
           populate_results_table(tweets);
-          // for (var i = 0; i < tweets.length; i++) {
-          // 	var $newdiv = $( "<div id='tweet"+i+"'>Name: "+tweets[i][1]+"<br>Tweet "+(i+1)+": "+tweets[i][0]+"</div><br><br>" );
-          // 	$("#tweets").append($newdiv);
-          // }
       },
       error: function(error) {
           $('#loadingModal').modal('hide');
@@ -514,7 +547,7 @@ function populate_results_table(tweets) {
 }
 
 $(document).ready(function() {
-    $("#htm").keydown(function (e) {
+    $("#hmt").keydown(function (e) {
         // Allow: backspace, delete, tab, escape, enter and .
         if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
              // Allow: Ctrl/cmd+A

@@ -21,4 +21,13 @@ $ chmod +x run.sh
 
 $ ./run.sh
 
+
+# Alternatively, install using Docker:
+
+$ sudo docker build -t elastictweet:latest .
+
+$ sudo docker run -it --rm --name elastictweet   -v "$PWD":/usr/src/view -w /usr/src/view   -e LANG=C.UTF-8 -e FLASK_APP=view.py --net="host"  -p 5000:5000 elastictweet:
+
+
 Then open http://127.0.0.1:5000/ in Chrome.
+
