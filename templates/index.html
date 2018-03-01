@@ -254,9 +254,8 @@ $(document).ready(function() {
 	</div>
       <!-- Typography -->
   <div id="typography" class="container mb-2">
-    <div class="section-title col-lg-8 col-md-10 ml-auto mr-auto">
-      <h5 class="mb-4">Results</h3>
-    </div>
+    <h5 style="text-align: center">Results</h3>
+  
 
     <div class="example col-md-12 ml-auto mr-auto">
       <table class="table table-striped table-responsive-md" id="results_table">
@@ -510,7 +509,7 @@ $(document).ready(function(){
 function populate_results_table(tweets) {
   clear();
   for (var i = 0; i < tweets.length; i++) {
-    $('#results_table > tbody:last-child').append('<tr><td></td><td>'+tweets[i][1]+'</td><td>'+tweets[i][0]+'</td></tr>');
+    $('#results_table > tbody:last-child').append('<tr><td>'+tweets[i][0]+'</td><td>'+tweets[i][1]+'</td><td>'+tweets[i][2]+'</td></tr>');
   }
 }
 

@@ -42,59 +42,17 @@ def get_tweets(query, max_tweets):
 
     tweetCount = 0
     print "Downloading max {0} tweets".format(max_tweets)
-    
-    # while tweetCount < maxTweets:
-    #     try:
-    #         if (max_id <= 0):
-    #             if (not sinceId):
-    #                 new_tweets = api.search(q=searchQuery, count=tweetsPerQry)
-    #             else:
-    #                 new_tweets = api.search(q=searchQuery, count=tweetsPerQry,
-    #                                         since_id=sinceId)
-    #         else:
-    #             if (not sinceId):
-    #                 new_tweets = api.search(q=searchQuery, count=tweetsPerQry,
-    #                                         max_id=str(max_id - 1))
-    #             else:
-    #                 new_tweets = api.search(q=searchQuery, count=tweetsPerQry,
-    #                                         max_id=str(max_id - 1),
-    #                                         since_id=sinceId)
-    #         if not new_tweets:
-    #             print("No more tweets found")
-    #             break
-    #         for tweet in new_tweets:
-    #             searched_tweets.append([tweet.text, tweet.user.name])
-    #         tweetCount += len(new_tweets)
-    #         print "Downloaded {0} tweets".format(tweetCount)
-    #         max_id = new_tweets[-1].id
-    #     except tweepy.TweepError as e:
-    #         # Just exit if any error
-    #         print("some error : " + str(e))
-    #         break
+
     searched_tweets = []
-    # last_id = -1
-    # try:
-    #     while len(searched_tweets) < max_tweets:
-    #         print "looping again, since len(searched_tweets)="+str(len(searched_tweets))+" < max_tweets="+str(max_tweets)
-    #         count = int(max_tweets) - len(searched_tweets)
-        
-    #         print "try to get count="+str(count)+"tweets, since len(searched_tweets="+str(len(searched_tweets))
-    #         new_tweets = api.search(q=query, count=count, max_id=str(last_id - 1))
-    #         if not new_tweets:
-    #             print "strange error"
-    #             break
-    #         searched_tweets.extend(new_tweets)
-    #         last_id = new_tweets[-1].id
-    # except tweepy.TweepError as e:
-    #     print "error ", e
+
     i = 1
     for tweet in tweepy.Cursor(api.search,
                            q=query,
                            result_type="recent",
                            include_entities=True,
                            lang="en").items():
-        print "new item! i = "+str(i)
-        tweets_return.append([tweet.text, tweet.user.screen_name])
+        # print tweet.user
+        tweets_return.append([tweet.user.name, tweet.user.screen_name, tweet.text])
         if i >= int(max_tweets):
         	print"trying to break!"
         	break
@@ -127,8 +85,9 @@ def push_to_es():
 
             es.index(index=index,
             	doc_type=doc_type,
-                 body={"screen_name": tweet[1],
-                       "message": tweet[0]})
+                 body={"name": tweet[0],
+                        "screen_name": tweet[1],
+                       "message": tweet[2]})
 
         return json.dumps({'status':'OK'});
     else:
