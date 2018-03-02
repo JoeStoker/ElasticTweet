@@ -1,128 +1,3 @@
-<!-- <html>
-<header>
-	<title>ElasticTweet</title>
-
-	<link rel="stylesheet" href="static/css/bootstrap.min.css">
-	<link rel="stylesheet" href="static/css/style.css">
-	<script src="static/js/jquery-3.3.1.min.js"></script>
-	<script src="static/js/bootstrap.min.js"></script>
-	</header>
-<body>
-Keyword: <input id="keyword_input" type="text" name="keyword"><br>
-<br><br><br>
-How many tweets to display? <input id="hmt_keyword" type="number" name="hmt" value=10><br>
-<input id="submit_keyword" type="submit" value="Submit"><br><br>
-<input id="clear_results" type="submit" value="Clear results"><br><br>
-Index: <input id="index_input" type="text" name="index"> <input name="index" id="push_to_es" type="submit" value="Push results to Elasticsearch"><br><br>
-
-<br><br><br>
-<div id="loading" style="display:none;">
-	Loading, this may take a while...
-</div>
-<div id="tweets">
-</div>
-</body>
-
-<script>
-
-$(document).ready(function(){
-	$("#clear_results").click(function(){
-		document.getElementById("tweets").innerHTML = "";
-		tweet_response = null;
-	});
-});
-
-function es_validation() {
-	if ($("#index_input").val() == "") {
-		alert("Please enter an index!");
-		return false;
-	}
-	if (tweet_response == null) {
-		alert("You must search for something.");
-		return false;
-	}
-	return true;
-}
-
-$(document).ready(function(){
-	$("#push_to_es").click(function(){
-		if (!es_validation()) {
-			return;
-		}
-		$.ajax({
-			type : 'POST',
-			url : "{{url_for('push_to_es')}}",
-  			data : {'tweets':tweet_response,
-  					'index':$("#index_input").val()},
-  			success: function(response) {
-  				alert("data successfully pushed to Elasticsearch!");
-            },
-            error: function(error) {
-                alert(error);
-            }
-		});
-	});
-});
-
-var tweet_response = null;
-$(document).ready(function(){
-	$("#submit_keyword").click(function(){
-		document.getElementById("loading").style.display="block";
-		document.getElementById("tweets").innerHTML = "";
-		$.ajax({
-			type : 'POST',
-			url : "{{url_for('submit_keyword')}}",
-  			data : {'keyword':$("#keyword_input").val(),
-  					'hmt':$("#hmt_keyword").val()},
-  			success: function(response) {
-  				document.getElementById("loading").style.display="none";
-  				tweet_response = response;
-                resp = jQuery.parseJSON(response);
-                tweets = resp["tweets"];
-                if (tweets.length == 0) {
-                	var $newdiv = $( "<div id='no_tweets'>No tweets to display.</div><br><br>" );
-                	$("#tweets").append($newdiv);
-                	tweet_response = null;
-                }
-                for (var i = 0; i < tweets.length; i++) {
-                	var $newdiv = $( "<div id='tweet"+i+"'>Name: "+tweets[i][1]+"<br>Tweet "+(i+1)+": "+tweets[i][0]+"</div><br><br>" );
-                	$("#tweets").append($newdiv);
-                }
-            },
-            error: function(error) {
-                document.getElementById("loading").style.display="none";
-                var $newdiv = $( "<div id='error_tweets'>An error seems to have occured.</div><br><br>" );
-                $("#tweets").append($newdiv);
-            }
-		});
-	});
-});
-
-$(document).ready(function() {
-    $("#htm").keydown(function (e) {
-        // Allow: backspace, delete, tab, escape, enter and .
-        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
-             // Allow: Ctrl/cmd+A
-            (e.keyCode == 65 && (e.ctrlKey === true || e.metaKey === true)) ||
-             // Allow: Ctrl/cmd+C
-            (e.keyCode == 67 && (e.ctrlKey === true || e.metaKey === true)) ||
-             // Allow: Ctrl/cmd+X
-            (e.keyCode == 88 && (e.ctrlKey === true || e.metaKey === true)) ||
-             // Allow: home, end, left, right
-            (e.keyCode >= 35 && e.keyCode <= 39)) {
-                 // let it happen, don't do anything
-                 return;
-        }
-        // Ensure that it is a number and stop the keypress
-        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-            e.preventDefault();
-        }
-    });
-});
-</script>
-</html> -->
-
-
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -143,9 +18,6 @@ $(document).ready(function() {
   <div class="loader">
     <div class="page-loader"></div>
   </div>
-
-  <!-- Floating Shards -->
-  <!-- <img src="images/demo/shard-1-5x-3.png" alt="Shard" class="shard"> -->
 
   <!-- Welcome Section -->
   <div class="welcome d-flex justify-content-center flex-column">
@@ -305,7 +177,6 @@ $(document).ready(function() {
   </div>
 </div>
 
-<!-- gifs: http://www.studentshow.com/gallery/31234507/Free-Loading-GIF-Icons-Vol-1 -->
 <div class="mb-5">
 
   <!-- Modal Body -->
@@ -410,7 +281,7 @@ $(document).ready(function() {
 </body>
 <script>
 
-
+// Event listener that fetches search history data.
 $(document).ready(function(){
   $("#history").click(function(){
     $.ajax({
@@ -431,12 +302,14 @@ $(document).ready(function(){
   });
 });
 
+// Event listener that clears search results
 $(document).ready(function(){
 	$("#clear_results").click(function(){
 		clear();
 	});
 });
 
+// Event listener that opens ElasticSearch in a new tab
 $(document).ready(function(){
   $("#open_es").click(function(){
     var win = window.open('http://'+$("#es_host_input").val()+":"+$("#es_port_input").val(), '_blank');
@@ -450,7 +323,7 @@ $(document).ready(function(){
   });
 });
 
-
+// Event listener that opens Kibana in a new tab
 $(document).ready(function(){
   $("#open_kibana").click(function(){
     var win = window.open('http://'+$("#kibana_host_input").val()+":"+$("#kibana_port_input").val(), '_blank');
@@ -464,11 +337,12 @@ $(document).ready(function(){
   });
 });
 
-
+// Clears search results
 function clear() {
   document.getElementById("results_table_body").innerHTML = "";
 }
 
+// Validates index and doc_type when pushing tweet data to ElasticSearch
 function es_validation() {
 	if ($("#index_input").val() == "") {
 		alert("Please enter an index!");
@@ -485,11 +359,15 @@ function es_validation() {
 	return true;
 }
 
+// Event listener that pushes tweet data to Elasticsearch
 $(document).ready(function(){
 	$("#push_to_es").click(function(){
 		if (!es_validation()) {
 			return;
 		}
+    $('#loadingModal').modal('show');
+    var gif_id = parseInt(Math.random()*10);
+    document.getElementById("loading_gif_"+gif_id).style.display="block";
 		$.ajax({
 			type : 'POST',
 			url : "{{url_for('push_to_es')}}",
@@ -499,23 +377,29 @@ $(document).ready(function(){
           'es_host':$("#es_host_input").val(),
           'es_port':$("#es_port_input").val()},
 			success: function(response) {
+        $('#loadingModal').modal('hide');
+        document.getElementById("loading_gif_"+gif_id).style.display="none";
 				alert("Data successfully pushed to Elasticsearch!");
       },
       error: function(error) {
-          alert("An error has occured.");
+        $('#loadingModal').modal('hide');
+        document.getElementById("loading_gif_"+gif_id).style.display="none";
+        alert("An error has occured.");
       }
 		});
 	});
 });
 
+// Variable that stores tweet search results
 var tweet_response = null;
+
+// Event listener that queries the server for tweet search results
 $(document).ready(function(){
 	$("#submit_keyword").click(function(){
     if ($("#keyword_input").val() == "") {
       alert("Please specify a keyword.");
       return;
     }
-		// document.getElementById("loading").style.display="block";
     $('#loadingModal').modal('show');
     var gif_id = parseInt(Math.random()*10);
     document.getElementById("loading_gif_"+gif_id).style.display="block";
@@ -526,7 +410,6 @@ $(document).ready(function(){
   			data : {'keyword':$("#keyword_input").val(),
   					'hmt':$("#hmt").val()},
   			success: function(response) {
-  				// document.getElementById("loading").style.display="none";
           $('#loadingModal').modal('hide');
           document.getElementById("loading_gif_"+gif_id).style.display="none";
   				tweet_response = response;
@@ -546,6 +429,7 @@ $(document).ready(function(){
 	});
 });
 
+// Fills the results table with tweet search results
 function populate_results_table(tweets) {
   clear();
   for (var i = 0; i < tweets.length; i++) {
@@ -553,6 +437,7 @@ function populate_results_table(tweets) {
   }
 }
 
+// Ensures that only numbers can be entered when specifying the number of tweets to return for a search
 $(document).ready(function() {
     $("#hmt").keydown(function (e) {
         // Allow: backspace, delete, tab, escape, enter and .

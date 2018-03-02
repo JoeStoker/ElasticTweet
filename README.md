@@ -10,6 +10,14 @@ Python 2.7.12
 
 Virtualenv 15.01
 
+or
+
+Docker version 17.12.1-ce
+
+# ElasticSearch and Kibana Instances
+
+This application assumes the client has their own instances of ElasticSearch and Kibana.
+
 
 # To install and run the application:
 
@@ -26,7 +34,7 @@ $ ./run.sh
 
 $ sudo docker build -t elastictweet:latest .
 
-$ sudo docker run -it --rm --name elastictweet   -v "$PWD":/usr/src/view -w /usr/src/view   -e LANG=C.UTF-8 -e FLASK_APP=view.py --net="host"  -p 5000:5000 elastictweet:
+$ sudo docker run -it --rm --name elastictweet   -v "$PWD":/usr/src/view -w /usr/src/view   -e LANG=C.UTF-8 -e FLASK_APP=view.py --net="host"  -p 5000:5000 elastictweet
 
 
 Then open http://127.0.0.1:5000/ in Chrome.
