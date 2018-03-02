@@ -37,12 +37,22 @@ You should arrive at the following landing page. Press on the "use app" button t
 
 ![Landing page](static/img/landing.png?raw=true "Landing page")
 
-You may type in any Keyword, specifying tweets to search for. Specify the number of tweets.
+You may type in any Keyword, specifying tweets to search for. Specify the number of tweets. 
 
 ![Keywords](static/img/keyword.png?raw=true "Keyword")
 
-By pressing "get tweets", the specified number of tweets are returned.
+By pressing "Get tweets", the specified number of tweets are returned. Pressing "History" displays the search history.
 
 ![Results](static/img/results.png?raw=true "Results")
+
+Pressing the "x" next to the "Results" heading clears the results table.
+
+One can now specify ElasticSearch and Kibana configuration details.
+
+![Configuration](static/img/configuration.png?raw=true "Configuration")
+
+After searching for tweets and specifying configuration details, one can push the search results to ElasticSearch. An index and doc_type should be specified. The tweets can then be viewed and analysed in Kibana.
+
+![Push](static/img/push.png?raw=true "Push")
 
 
