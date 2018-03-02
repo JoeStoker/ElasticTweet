@@ -31,10 +31,18 @@ $ sudo docker run -it --rm --name elastictweet   -v "$PWD":/usr/src/view -w /usr
 
 Then open http://127.0.0.1:5000/ in Chrome.
 
-# Using the application
+# Tutorial - Using the application
 
-You should arrive at the following landing page.
+You should arrive at the following landing page. Press on the "use app" button to procede.
 
 ![Landing page](static/img/landing.png?raw=true "Landing page")
+
+You may type in any Keyword, specifying tweets to search for. Specify the number of tweets.
+
+![Keywords](static/img/keyword.png?raw=true "Keyword")
+
+By pressing "get tweets", the specified number of tweets are returned.
+
+![Results](static/img/results.png?raw=true "Results")
 
 
