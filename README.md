@@ -45,11 +45,11 @@ By pressing "Get tweets", the specified number of tweets are returned. Pressing 
 
 ![Results](static/img/results.png?raw=true "Results")
 
-Pressing the "x" next to the "Results" heading clears the results table.
+Pressing the "x" button next to the "Results" heading clears the results table.
 
 One can now specify ElasticSearch and Kibana configuration details.
 
-![Configuration](static/img/configuration.png?raw=true "Configuration")
+![Configuration](static/img/configurations.png?raw=true "Configuration")
 
 After searching for tweets and specifying configuration details, one can push the search results to ElasticSearch. An index and doc_type should be specified. The tweets can then be viewed and analysed in Kibana.
 
